@@ -55,6 +55,7 @@ public class AccountsController {
             this.accountsService.transfer(accountFrom, accountTo, amount);
             return ResponseEntity.accepted().build();
         } catch (InvalidTransferRequestException e) {
+			log.error(e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
